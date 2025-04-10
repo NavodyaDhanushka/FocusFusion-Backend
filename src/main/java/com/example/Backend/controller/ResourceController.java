@@ -76,7 +76,20 @@ public class ResourceController
     public ResponseEntity<List<ResourceResponseDTO>> searchByTitle(
             @RequestParam String title) {
 
-        return ResponseEntity.ok(resourceService.searchByTitle(title));
+        // Create a logger instance for this class
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        // Log the title received in the request
+        logger.info("Received search request with title: {}", title);
+
+        // Fetch the search results
+        List<ResourceResponseDTO> searchResults = resourceService.searchByTitle(title);
+
+        // Log the number of results found
+        logger.info("Search completed. Found {} results for title: {}", searchResults.size(), title);
+
+        // Return the search results
+        return ResponseEntity.ok(searchResults);
     }
 
     @DeleteMapping("/{id}/user/{userId}")
