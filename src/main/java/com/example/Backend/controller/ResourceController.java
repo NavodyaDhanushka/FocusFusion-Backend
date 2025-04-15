@@ -97,7 +97,19 @@ public class ResourceController
             @PathVariable String id,
             @PathVariable String userId) {
 
+        // Create a logger instance for this class
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        // Log the deletion request with the resource ID and user ID
+        logger.info("Received request to delete resource with ID: {} for user: {}", id, userId);
+
+        // Call the service to delete the resource
         resourceService.deleteResource(id, userId);
+
+        // Log successful deletion
+        logger.info("Resource with ID: {} deleted successfully for user: {}", id, userId);
+
+        // Return status NO_CONTENT
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
