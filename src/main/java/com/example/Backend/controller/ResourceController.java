@@ -1,6 +1,8 @@
 package com.example.Backend.controller;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,21 +25,34 @@ import com.example.Backend.service.ResourceService;
 @RestController
 @RequestMapping("/api/resources")
 @CrossOrigin(origins = "*")
-public class ResourceController {
 
+
+public class ResourceController
+{
     @Autowired
     private ResourceService resourceService;
-
 
     @PostMapping("/user/{userId}")
     public ResponseEntity<ResourceResponseDTO> createResource(
             @PathVariable String userId,
             @RequestBody ResourceDTO dto) {
 
+        // Create a logger instance for this class
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        // Log the userId and incoming data
+        logger.info("Received request to create resource for user: {}", userId);
+        logger.info("Request body: {}", dto);
+
+        // Call the service to create the resource
         ResourceResponseDTO created = resourceService.createResource(userId, dto);
+
+        // Log the result after resource creation
+        logger.info("Resource created successfully: {}", created);
+
+        // Return the created resource with status
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
-
 
     @GetMapping
     public ResponseEntity<List<ResourceResponseDTO>> getAll() {
@@ -56,7 +71,6 @@ public class ResourceController {
     public ResponseEntity<List<ResourceResponseDTO>> getByUser(@PathVariable String userId) {
         return ResponseEntity.ok(resourceService.getResourcesByUser(userId));
     }
-
 
     @GetMapping("/search")
     public ResponseEntity<List<ResourceResponseDTO>> searchByTitle(
