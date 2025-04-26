@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//learning progress model creation
+
 @Document(collection = "learning_progress")
 @AllArgsConstructor
 @NoArgsConstructor

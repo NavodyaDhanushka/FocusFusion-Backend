@@ -30,3 +30,4 @@ public class Event {
     private long createdAt;
     private long updatedAt;
 }
+//create event model

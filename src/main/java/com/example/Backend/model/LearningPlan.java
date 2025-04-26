@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//learning plan model creation
+
 @Document(collection = "learning_plan")
 public class LearningPlan {
     @Id
