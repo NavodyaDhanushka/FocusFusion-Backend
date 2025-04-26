@@ -28,7 +28,7 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    // Create a new event for a user
+    
     @PostMapping("/user/{userId}")
     public ResponseEntity<EventResponseDTO> createEvent(
             @PathVariable String userId,
