@@ -6,10 +6,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//create the Resources model
+
 @Document(collection = "resources")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Resource {
     @Id
     private String id;
