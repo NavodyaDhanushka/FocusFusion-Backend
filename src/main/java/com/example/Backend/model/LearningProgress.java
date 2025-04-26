@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-//create learning prograss modle
+//create learning prograss model
 
 @Document(collection = "learning_progress")
 @AllArgsConstructor
