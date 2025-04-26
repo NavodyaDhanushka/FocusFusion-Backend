@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.Backend.model.Event;
 
+// EventRepository
 @Repository
 public interface EventRepository extends MongoRepository<Event, String> {
     List<Event> findByUserId(String userId);
