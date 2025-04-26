@@ -3,6 +3,7 @@ package com.example.Backend.dto;
 import java.util.List;
 import lombok.Data;
 
+// EventDTORepository
 @Data
 public class EventResponseDTO {
     private String id;
