@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//create event model
+
 @Document(collection = "events")
 @Data
 @AllArgsConstructor
