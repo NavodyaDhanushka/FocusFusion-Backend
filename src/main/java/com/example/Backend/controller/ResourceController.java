@@ -33,13 +33,15 @@ public class ResourceController {
     public ResponseEntity<ResourceResponseDTO> createResource(
             @PathVariable String userId,
             @RequestBody ResourceDTO dto) {
+
         ResourceResponseDTO created = resourceService.createResource(userId, dto);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
-    // Get all resources
+
     @GetMapping
     public ResponseEntity<List<ResourceResponseDTO>> getAll() {
+
         return ResponseEntity.ok(resourceService.getAllResources());
     }
 
@@ -59,6 +61,7 @@ public class ResourceController {
     @GetMapping("/search")
     public ResponseEntity<List<ResourceResponseDTO>> searchByTitle(
             @RequestParam String title) {
+
         return ResponseEntity.ok(resourceService.searchByTitle(title));
     }
 
@@ -66,6 +69,7 @@ public class ResourceController {
     public ResponseEntity<Void> deleteResource(
             @PathVariable String id,
             @PathVariable String userId) {
+
         resourceService.deleteResource(id, userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -76,6 +80,7 @@ public class ResourceController {
             @PathVariable String id,
             @PathVariable String userId,
             @RequestBody ResourceDTO dto) {
+
         ResourceResponseDTO updated = resourceService.updateResource(id, userId, dto);
         return ResponseEntity.ok(updated);
     }
