@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ResourceResponseDTO {
+
     private String id;
     private String userId;
     private String title;
