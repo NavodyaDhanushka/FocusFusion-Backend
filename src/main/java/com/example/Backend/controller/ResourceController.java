@@ -28,7 +28,7 @@ public class ResourceController {
     @Autowired
     private ResourceService resourceService;
 
-    // Create a new resource for a specific user
+
     @PostMapping("/user/{userId}")
     public ResponseEntity<ResourceResponseDTO> createResource(
             @PathVariable String userId,
@@ -43,26 +43,34 @@ public class ResourceController {
         return ResponseEntity.ok(resourceService.getAllResources());
     }
 
-    // Get resource by ID
+
     @GetMapping("/{id}")
     public ResponseEntity<ResourceResponseDTO> getById(@PathVariable String id) {
         return ResponseEntity.ok(resourceService.getResourceById(id));
     }
 
-    // Get all resources by user
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<ResourceResponseDTO>> getByUser(@PathVariable String userId) {
         return ResponseEntity.ok(resourceService.getResourcesByUser(userId));
     }
 
-    // Search resources by title
+
     @GetMapping("/search")
     public ResponseEntity<List<ResourceResponseDTO>> searchByTitle(
             @RequestParam String title) {
         return ResponseEntity.ok(resourceService.searchByTitle(title));
     }
 
-    // Update a resource (only owner)
+    @DeleteMapping("/{id}/user/{userId}")
+    public ResponseEntity<Void> deleteResource(
+            @PathVariable String id,
+            @PathVariable String userId) {
+        resourceService.deleteResource(id, userId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
     @PutMapping("/{id}/user/{userId}")
     public ResponseEntity<ResourceResponseDTO> updateResource(
             @PathVariable String id,
@@ -72,12 +80,6 @@ public class ResourceController {
         return ResponseEntity.ok(updated);
     }
 
-    // Delete a resource (only owner)
-    @DeleteMapping("/{id}/user/{userId}")
-    public ResponseEntity<Void> deleteResource(
-            @PathVariable String id,
-            @PathVariable String userId) {
-        resourceService.deleteResource(id, userId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+
+
 }
