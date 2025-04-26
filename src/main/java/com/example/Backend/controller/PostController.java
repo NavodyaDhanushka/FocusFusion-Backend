@@ -65,7 +65,7 @@ public class PostController {
         return new ResponseEntity<>(updatedPost, HttpStatus.OK);
     }
 
-    // Delete a post
+    // Delete a post.
     //fixed delete erorr.
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable String id) {
