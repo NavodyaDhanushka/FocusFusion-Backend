@@ -66,6 +66,7 @@ public class PostController {
     }
 
     // Delete a post
+    //fixed delete erorr
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable String id) {
         postService.deletePost(id);
