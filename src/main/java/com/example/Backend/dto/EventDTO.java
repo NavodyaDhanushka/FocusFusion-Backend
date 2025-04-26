@@ -2,6 +2,7 @@ package com.example.Backend.dto;
 
 import lombok.Data;
 
+// EventDTO
 @Data
 public class EventDTO {
     private String title;
