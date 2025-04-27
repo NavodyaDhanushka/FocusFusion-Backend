@@ -8,45 +8,31 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * Represents a learning progress entity stored in MongoDB.
- * Tracks user's learning activities, progress status, and related information.
- */
-@Document(collection = "learning_progress")  // MongoDB collection name
-@AllArgsConstructor  // Lombok: Generates constructor with all arguments
-@NoArgsConstructor   // Lombok: Generates no-args constructor
+//create learning prograss model
+
+@Document(collection = "learning_progress")
+@AllArgsConstructor
+@NoArgsConstructor
 public class LearningProgress {
-    @Id  // Marks this field as the MongoDB document ID
+    @Id
     private String id;
-    
-    // User information
-    private String userId;       // ID of the user who created this progress entry
-    private String userName;     // Name of the user
-    
-    // Progress metadata
-    private String title;        // Title of the learning progress
-    private String description;  // Detailed description
-    private String templateType; // Type/category of the progress template
-    private String status;       // Current status (e.g., "In Progress", "Completed")
-    
-    // Learning-specific details
-    private String tutorialName;   // Name of tutorial/course being followed
-    private String projectName;    // Name of related project
-    private String skillsLearned;  // Skills acquired through this progress
-    private String challenges;     // Challenges faced during learning
-    private String nextSteps;      // Planned next steps in learning journey
-    
-    // Timestamps
-    private Date createdAt;    // When this progress entry was created
-    private Date updatedAt;    // When this progress was last updated
-    
-    // Social interaction features
-    private List<Like> likes;       // List of likes/reactions to this progress
-    private List<Comment> comments; // Comments on this progress entry
+    private String userId;
+    private String userName;
+    private String title;
+    private String description;
+    private String templateType;
+    private String status;
+    private String tutorialName;
+    private String projectName;
+    private String skillsLearned;
+    private String challenges;
+    private String nextSteps;
+    private Date createdAt;
+    private Date updatedAt;
+    private List<Like> likes;
+    private List<Comment> comments;
 
-    // ========== GENERATED GETTERS AND SETTERS ========== //
-    // (Below are standard accessor methods for all fields) //
-
+    // Getters and setters
     public String getId() {
         return id;
     }
