@@ -95,7 +95,20 @@ public class ResourceController
             @PathVariable String userId,
             @RequestBody ResourceDTO dto) {
 
+        // Create a logger instance for this class
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        // Log the ID, userId, and incoming request data
+        logger.info("Received request to update resource with ID: {} for user: {}", id, userId);
+        logger.info("Request body: {}", dto);
+
+        // Call the service to update the resource
         ResourceResponseDTO updated = resourceService.updateResource(id, userId, dto);
+
+        // Log the result after the resource has been updated
+        logger.info("Resource updated successfully: {}", updated);
+
+        // Return the updated resource with status
         return ResponseEntity.ok(updated);
     }
 
