@@ -76,7 +76,20 @@ public class ResourceController
     public ResponseEntity<List<ResourceResponseDTO>> searchByTitle(
             @RequestParam String title) {
 
-        return ResponseEntity.ok(resourceService.searchByTitle(title));
+        // Create a logger instance for this class
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        // Log the title received in the request
+        logger.info("Received search request with title: {}", title);
+
+        // Fetch the search results
+        List<ResourceResponseDTO> searchResults = resourceService.searchByTitle(title);
+
+        // Log the number of results found
+        logger.info("Search completed. Found {} results for title: {}", searchResults.size(), title);
+
+        // Return the search results
+        return ResponseEntity.ok(searchResults);
     }
 
     @DeleteMapping("/{id}/user/{userId}")
@@ -84,7 +97,19 @@ public class ResourceController
             @PathVariable String id,
             @PathVariable String userId) {
 
+        // Create a logger instance for this class
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        // Log the deletion request with the resource ID and user ID
+        logger.info("Received request to delete resource with ID: {} for user: {}", id, userId);
+
+        // Call the service to delete the resource
         resourceService.deleteResource(id, userId);
+
+        // Log successful deletion
+        logger.info("Resource with ID: {} deleted successfully for user: {}", id, userId);
+
+        // Return status NO_CONTENT
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
