@@ -13,6 +13,7 @@ import com.example.Backend.dto.EventResponseDTO;
 import com.example.Backend.model.Event;
 import com.example.Backend.repository.EventRepository;
 
+// Event Service
 @Service
 public class EventService {
 
