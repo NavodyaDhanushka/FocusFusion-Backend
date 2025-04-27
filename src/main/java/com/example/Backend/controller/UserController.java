@@ -18,8 +18,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
-public class UserController {
 
+public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
 
@@ -56,7 +56,6 @@ public class UserController {
 
         User user = existingUser.get();
 
-        // Check if email is provided and already in use by another user
         if (userUpdateDTO.getEmail() != null && !userUpdateDTO.getEmail().trim().isEmpty()) {
             Optional<User> userWithEmail = userRepository.findByEmail(userUpdateDTO.getEmail());
             if (userWithEmail.isPresent() && !userWithEmail.get().getId().equals(id)) {
@@ -65,12 +64,12 @@ public class UserController {
             user.setEmail(userUpdateDTO.getEmail());
         }
 
-        // Update name if provided
+
         if (userUpdateDTO.getName() != null && !userUpdateDTO.getName().trim().isEmpty()) {
             user.setName(userUpdateDTO.getName());
         }
 
-        // Save updated user
+
         try {
             User updatedUser = userRepository.save(user);
             return ResponseEntity.ok(userService.convertToProfileDTO(updatedUser));
